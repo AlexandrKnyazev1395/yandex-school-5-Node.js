@@ -1,12 +1,13 @@
 const fs = require('fs');
 
-
 class GitAPI {
-  constructor() {
-
+  constructor(folder) {
+    this.folder = folder;
   }
+
   getFiles() {
-    console.log("files")
+    const a = fs.readFile;
+    console.log(this.folder);
   }
 }
 
