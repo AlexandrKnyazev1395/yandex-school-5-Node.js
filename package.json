@@ -5,7 +5,8 @@
   "scripts": {
     "nodemon": "nodemon start.js",
     "start": "node ./bin/www",
-    "lint": "eslint . --ext .js --ignore-pattern node_modules/"
+    "lint": "eslint . --ext .js --ignore-pattern node_modules/",
+    "test": "node ./tests/"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
