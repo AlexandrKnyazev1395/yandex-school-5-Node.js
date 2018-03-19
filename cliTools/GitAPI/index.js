@@ -6,8 +6,7 @@ class GitAPI {
   }
 
   getFiles() {
-    const a = fs.readFile;
-    console.log(this.folder);
+    console.log(this);
   }
 }
 
