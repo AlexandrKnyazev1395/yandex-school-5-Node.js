@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "nodemon": "nodemon start.js",
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "lint": "eslint . --ext .js --ignore-pattern node_modules/"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
