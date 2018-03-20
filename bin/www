@@ -33,7 +33,7 @@ function normalizePort(val) {
  * Get port from environment and store in Express.
  */
 const port = normalizePort(process.env.PORT || config.port);
-
+const host = { config };
 /**
  * Event listener for HTTP server "error" event.
  */
@@ -85,7 +85,7 @@ app.set('port', port);
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port, () => {
+server.listen(port, host, () => {
   console.log(`server is runnung at ${port} `);
 });
 server.on('error', onError);
