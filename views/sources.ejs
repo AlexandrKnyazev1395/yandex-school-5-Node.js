@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MyGit</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <h2><%= section %> </h2>
+    <ul class="sources-list">
+      <% sources.forEach(function(source){ %>
+        <li>
+          <span><%= source %></span> 
+        </li>
+      <% }); %>
+    </ul>
+  </body>
+</html>
