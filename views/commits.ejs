@@ -8,11 +8,10 @@
     <h1><%= title %></h1>
     <h2><%= section %> </h2>
     <ul class="sources-list">
-      <% branches.forEach(function(branch){ %>
+      <% commits.forEach(function(commit){ %>
         <li>
-          <span><%= branch %></span> 
-          <a href="commits/<%= branch %>">commits</a> 
-          <a href="sources/<%= branch %>">sources</a> 
+          <a href="commits/<%= branch %>"><%= commit.hash %></a>
+          <span><%= commit.extraCommitInfo %></span> 
         </li>
       <% }); %>
     </ul>
