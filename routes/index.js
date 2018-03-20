@@ -2,28 +2,24 @@ const express = require('express');
 
 const router = express.Router();
 
-const GitAPI = require('../cliTools/GitAPI');
+const { getBranches } = require('../cliTools/git');
 
-/* GET home page. */
 router.get('/', async (req, res, next) => {
-  const gitAPI = new GitAPI();
-  const branches = await gitAPI.getBranches();
+  const branches = await getBranches();
   //  const sources = await gitAPI.getSources();
   if (!branches.errors.length) {
     res.render('index', {
-      title: 'My git sources',
+      title: 'My git',
       section: 'Branches',
       branches: branches.body,
     });
   } else {
-    res.render('index', {
-      title: 'My git sources',
+    res.render('error', {
+      title: 'My git',
       section: 'Branches',
-      errors: branches.errors
+      errors: branches.errors,
     });
   }
-  
-  
 });
 
 module.exports = router;
