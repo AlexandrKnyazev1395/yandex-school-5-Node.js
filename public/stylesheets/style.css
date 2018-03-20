@@ -6,3 +6,29 @@ body {
 a {
   color: #00B7FF;
 }
+
+.sources-list {
+  width: 50%;
+  padding: 0;
+}
+
+.sources-list li {
+  padding: 10px;
+  list-style-type: none;
+  border-bottom: 1px solid #00B7FF;
+}
+
+.sources-list li span {
+  padding: 10px;
+  font-size: 16px;
+  list-style-type: none;
+}
+
+.sources-list li a {
+  margin: 0px 5px;
+  padding: 5px 5px;
+  border-radius: 10px;
+}
+.sources-list li a:hover {
+  background-color: rgba(0, 0, 0, 0.1)
+}

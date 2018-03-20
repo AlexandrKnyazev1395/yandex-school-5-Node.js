@@ -86,7 +86,7 @@ app.set('port', port);
  */
 
 server.listen(port, () => {
-  console.log('server is runnung on port');
+  console.log(`server is runnung at ${port} `);
 });
 server.on('error', onError);
 server.on('listening', onListening);

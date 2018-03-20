@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>MyGit</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <h2><%= section %> </h2>
+    <ul class="sources-list">
+      <% branches.forEach(function(branch){ %>
+        <li>
+          <span><%= branch %></span> 
+          <a href="commits/<%= branch %>">commits</a> 
+          <a href="files/<%= branch %>">files</a> 
+        </li>
+      <% }); %>
+    </ul>
   </body>
 </html>
