@@ -6,7 +6,7 @@ const config = require('../../config');
 
 const repoFolder = config.repo;
 const defaultSpawnOptions = { 
-  cwd: `${path.resolve(__dirname)}/../../${repoFolder}`,
+  cwd: repoFolder,
 };
 
 const defaultExecuteCliOptions = {
