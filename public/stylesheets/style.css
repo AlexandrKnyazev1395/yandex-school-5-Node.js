@@ -8,7 +8,7 @@ a {
 }
 
 .sources-list {
-  width: 50%;
+  width: 80%;
   padding: 0;
 }
 
@@ -26,9 +26,15 @@ a {
 
 .sources-list li a {
   margin: 0px 5px;
-  padding: 5px 5px;
+  padding: 9px 5px;
   border-radius: 10px;
 }
 .sources-list li a:hover {
   background-color: rgba(0, 0, 0, 0.1)
+}
+
+#fileContent {
+  padding: 20px;
+  border: 1px solid black;
+  white-space: pre;
 }
