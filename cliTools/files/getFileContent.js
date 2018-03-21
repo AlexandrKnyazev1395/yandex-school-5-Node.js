@@ -6,7 +6,7 @@ const config = require('../../config');
 const repoFolder = config.repo;
 
 async function getFileContent(pathToFile) {
-  const filePath = `${path.resolve(__dirname)}/../../${repoFolder}/${pathToFile}`;
+  const filePath = `${repoFolder}/${pathToFile}`;
   const result = {
     body: '',
     errors: [],
