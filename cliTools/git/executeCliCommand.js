@@ -5,13 +5,26 @@ const path = require('path');
 const config = require('../../config');
 
 const repoFolder = config.repo;
-const spawnOptions = { 
+const defaultSpawnOptions = { 
   cwd: `${path.resolve(__dirname)}/../../${repoFolder}`,
 };
 
-function executeCliCommand(bashText, isLookForErrors = true) {
+const defaultExecuteCliOptions = {
+  isLookForErrors: true,
+  pathModificator: '',
+};
+
+function executeCliCommand(bashText, executeCliOptions = defaultExecuteCliOptions) {
+  const {
+    isLookForErrors,
+    pathModificator,
+  } = executeCliOptions;
   const commandWords = bashText.split(' ');
   const [command, ...keys] = commandWords;
+  const spawnOptions = { ...defaultSpawnOptions };
+  if (pathModificator) {
+    spawnOptions.cwd += `/${pathModificator}`;
+  }
   const executing = spawn(command, keys, spawnOptions);
   return new Promise((resolve, reject) => {
     const result = {

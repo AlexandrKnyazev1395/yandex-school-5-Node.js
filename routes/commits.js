@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { checkoutToBranch, getCommits } = require('../cliTools/git');
+const { checkout, getCommits } = require('../cliTools/git');
 
 const router = express.Router();
 
@@ -10,7 +10,7 @@ router.get('/:branch', async (req, res, next) => {
   if (!branch) {
     branch = 'master';
   }
-  await checkoutToBranch(branch);
+  await checkout(branch);
   const commits = await getCommits();
   res.render('commits', {
     title: 'My git',

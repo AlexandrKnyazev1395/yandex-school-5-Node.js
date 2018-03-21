@@ -8,9 +8,16 @@
     <h1><%= title %></h1>
     <h2><%= section %> </h2>
     <ul class="sources-list">
-      <% sources.forEach(function(source){ %>
+      <% folders.forEach(function(folder){ %>
         <li>
-          <span><%= source %></span> 
+          <a href="/sources/<%= branch %>?path=<%= folder.sourcePath %>">
+            <%= folder.sourceName %>
+          </a> 
+        </li>
+      <% }); %>
+      <% files.forEach(function(file){ %>
+        <li>
+          <span><%= file.sourceName %></span> 
         </li>
       <% }); %>
     </ul>

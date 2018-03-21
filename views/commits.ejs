@@ -10,7 +10,7 @@
     <ul class="sources-list">
       <% commits.forEach(function(commit){ %>
         <li>
-          <a href="commits/<%= branch %>"><%= commit.hash %></a>
+          <a href="/sources/<%= branch %>?commit=<%= commit.hash %>"><%= commit.hash %></a>
           <span><%= commit.extraCommitInfo %></span> 
         </li>
       <% }); %>

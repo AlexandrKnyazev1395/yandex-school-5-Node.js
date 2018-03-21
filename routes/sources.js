@@ -1,20 +1,26 @@
 const express = require('express');
 
-const { checkoutToBranch, getSources } = require('../cliTools/git');
+const { checkout, getSources } = require('../cliTools/git');
 
 const router = express.Router();
 
 router.get('/:branch', async (req, res, next) => {
-  let { branch } = req.params;
-  if (!branch) {
-    branch = 'master';
+  const { branch } = req.params;
+  const { commit, path } = req.query;
+  let destination;
+  if (commit) {
+    destination = commit;
+  } else {
+    destination = branch;
   }
-  await checkoutToBranch(branch);
-  const sources = await getSources();
+  await checkout(destination);
+  const sources = await getSources(destination, path);
   res.render('sources', {
     title: 'My git',
     section: 'Sources',
-    sources: sources.body,
+    folders: sources.body.folders,
+    files: sources.body.files,
+    branch,
   });
 });
 
