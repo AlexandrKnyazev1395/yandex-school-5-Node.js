@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const index = require('./routes/index');
 const sources = require('./routes/sources');
 const commits = require('./routes/commits');
+const file = require('./routes/file');
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/sources', sources);
 app.use('/commits', commits);
+app.use('/file', file);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
