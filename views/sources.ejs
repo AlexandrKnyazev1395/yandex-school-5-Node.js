@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
     <title>MyGit</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
@@ -17,7 +18,15 @@
       <% }); %>
       <% files.forEach(function(file){ %>
         <li>
-          <span><%= file.sourceName %></span> 
+        <% if(commit){ %>
+          <a href="/file/<%= commit %>/<%= file.sourcePath %>">
+            <%= file.sourceName %>
+          </a> 
+        <% } else{ %>  
+          <a href="/file/<%= branch %>/<%= file.sourcePath %>">
+            <%= file.sourceName %>
+          </a>  
+        <% } %>
         </li>
       <% }); %>
     </ul>

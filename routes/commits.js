@@ -12,12 +12,18 @@ router.get('/:branch', async (req, res, next) => {
   }
   await checkout(branch);
   const commits = await getCommits();
-  res.render('commits', {
-    title: 'My git',
-    section: 'Sources',
-    commits: commits.body,
-    branch,
-  });
+  if (!commits.errors.length) {
+    res.render('commits', {
+      title: 'Мой гит',
+      section: 'Комиты',
+      commits: commits.body,
+      branch,
+    });
+  } else {
+    res.render('error', {
+      errorText: commits.errors.join(','),
+    });
+  }
 });
 
 module.exports = router;

@@ -15,13 +15,20 @@ router.get('/:branch', async (req, res, next) => {
   }
   await checkout(destination);
   const sources = await getSources(destination, path);
-  res.render('sources', {
-    title: 'My git',
-    section: 'Sources',
-    folders: sources.body.folders,
-    files: sources.body.files,
-    branch,
-  });
+  if (!sources.errors.length) { 
+    res.render('sources', {
+      title: 'Мой гит',
+      section: 'Исходники',
+      folders: sources.body.folders,
+      files: sources.body.files,
+      branch,
+      commit,
+    });
+  } else {
+    res.render('error', {
+      errorText: sources.errors.join(','),
+    });
+  }
 });
 
 module.exports = router;

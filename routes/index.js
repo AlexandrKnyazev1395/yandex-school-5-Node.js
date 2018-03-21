@@ -6,18 +6,15 @@ const { getBranches } = require('../cliTools/git');
 
 router.get('/', async (req, res, next) => {
   const branches = await getBranches();
-  //  const sources = await gitAPI.getSources();
   if (!branches.errors.length) {
     res.render('index', {
-      title: 'My git',
-      section: 'Branches',
+      title: 'Мой гит',
+      section: 'Ветки',
       branches: branches.body,
     });
   } else {
     res.render('error', {
-      title: 'My git',
-      section: 'Branches',
-      errors: branches.errors,
+      errorText: branches.errors.join(','),
     });
   }
 });
