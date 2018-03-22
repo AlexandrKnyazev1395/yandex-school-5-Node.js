@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 
 const isDeveloping = process.env.NODE_ENV !== 'production';
 const app = express();
+
 // webpack-dev-server
 if (isDeveloping) {
   // eslint-disable-next-line

@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "nodemon": "nodemon start.js --ignore repo/",
-    "dev": "node start.js",
+    "dev-server": "nodemon start.js --ignore client/",
+    "dev-client": "node start.js",
+    "dev": "nodemon --ignore client/ start.js",
     "start": "export NODE_ENV=production && node start.js ",
     "lint": "eslint . --ext .js --ignore-pattern public --ignore-pattern node_modules/ && stylelint **/*.css",
     "test": "echo \"Error: no test specified\" && exit 1",
