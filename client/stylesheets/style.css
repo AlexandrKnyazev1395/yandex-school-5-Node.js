@@ -3,6 +3,11 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+.git-logo {
+  width: 20px;
+  height: 20px;
+}
+
 a {
   color: #00B7FF;
 }

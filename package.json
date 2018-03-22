@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "nodemon": "nodemon start.js --ignore repo/",
-    "start": "node ./bin/www",
-    "lint": "eslint . --ext .js --ignore-pattern node_modules/ && stylelint **/*.css",
-    "test": "node ./tests/"
+    "dev": "node start.js",
+    "start": "export NODE_ENV=production && node start.js ",
+    "lint": "eslint . --ext .js --ignore-pattern public --ignore-pattern node_modules/ && stylelint **/*.css",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm -rf ./public && webpack --config ./webpack.config.production.js"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
@@ -20,9 +22,17 @@
     "serve-favicon": "~2.4.5"
   },
   "devDependencies": {
+    "clean-webpack-plugin": "^0.1.19",
+    "copy-webpack-plugin": "^4.5.1",
+    "css-loader": "^0.28.11",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.9.0",
+    "file-loader": "^1.1.11",
     "nodemon": "^1.17.2",
-    "stylelint-config-recommended": "^2.1.0"
+    "style-loader": "^0.20.3",
+    "stylelint-config-recommended": "^2.1.0",
+    "webpack": "^4.2.0",
+    "webpack-cli": "^2.0.12",
+    "webpack-dev-server": "^3.1.1"
   }
 }

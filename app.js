@@ -5,23 +5,48 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
+const isDeveloping = process.env.NODE_ENV !== 'production';
+const app = express();
+// webpack-dev-server
+if (isDeveloping) {
+  // eslint-disable-next-line
+  const webpack = require('webpack');
+  // eslint-disable-next-line
+  const webpackDevMiddleware = require('webpack-dev-middleware');
+  // eslint-disable-next-line
+  const webpackConfig = require('./webpack.config.dev.js');
+  const compiler = webpack(webpackConfig);
+  const middleware = webpackDevMiddleware(compiler, {
+    publicPath: webpackConfig.output.publicPath,
+    stats: {
+      colors: true,
+      hash: false,
+      timings: true,
+      chunks: false,
+      chunkModules: false,
+      modules: false,
+    },
+  });
+  app.use(middleware);
+} else {
+  app.use(express.static(path.join(__dirname, 'public')));
+}
+
 const index = require('./routes/index');
 const sources = require('./routes/sources');
 const commits = require('./routes/commits');
 const file = require('./routes/file');
 
-const app = express();
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public/assets', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.use('/', index);
 app.use('/sources', sources);
