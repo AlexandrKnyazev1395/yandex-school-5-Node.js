@@ -33,7 +33,7 @@ a {
   background-color: rgba(0, 0, 0, 0.1)
 }
 
-#fileContent {
+.file-content {
   padding: 20px;
   border: 1px solid black;
   white-space: pre;
