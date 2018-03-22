@@ -10,8 +10,7 @@ router.get('/:branch', async (req, res, next) => {
   if (!branch) {
     branch = 'master';
   }
-  await checkout(branch);
-  const commits = await getCommits();
+  const commits = await getCommits(branch);
   if (!commits.errors.length) {
     res.render('commits', {
       title: 'Мой гит',

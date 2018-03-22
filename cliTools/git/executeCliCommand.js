@@ -12,12 +12,14 @@ const defaultSpawnOptions = {
 const defaultExecuteCliOptions = {
   isLookForErrors: true,
   pathModificator: '',
+  isSplitByEnter: true,
 };
 
 function executeCliCommand(bashText, executeCliOptions = defaultExecuteCliOptions) {
   const {
     isLookForErrors,
     pathModificator,
+    isSplitByEnter,
   } = executeCliOptions;
   const commandWords = bashText.split(' ');
   const [command, ...keys] = commandWords;
@@ -41,10 +43,12 @@ function executeCliCommand(bashText, executeCliOptions = defaultExecuteCliOption
     });
     executing.on('close', (code) => {
       if (result.body) {
-        console.log(result.body.toString());
-        // конвертируем unit8Array в stringArray
-        result.body = result.body.toString().split('\n');
-        result.body = result.body.filter(s => s !== '');
+        if (isSplitByEnter) {
+          console.log(result.body.toString());
+          // конвертируем unit8Array в stringArray
+          result.body = result.body.toString().split('\n');
+          result.body = result.body.filter(s => s !== '');
+        }
       }
       resolve(result);
     });

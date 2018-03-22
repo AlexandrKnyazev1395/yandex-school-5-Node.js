@@ -13,7 +13,6 @@ router.get('/:branch', async (req, res, next) => {
   } else {
     destination = branch;
   }
-  await checkout(destination);
   const sources = await getSources(destination, path);
   if (!sources.errors.length) { 
     res.render('sources', {

@@ -1,8 +1,12 @@
 const executeCliCommand = require('./executeCliCommand');
 
+/**
+ * 
+ 
+ */
 async function getSources(destination, pathModificator) {
   const bashText = `git ls-tree ${destination}`;
-  const executeCliOptions = { };
+  const executeCliOptions = { isSplitByEnter: true };
   if (pathModificator) {
     executeCliOptions.pathModificator = pathModificator;
   }
@@ -26,7 +30,7 @@ function separateFoldersAndFiles(sources, pathModificator) {
   const files = [];
   const folders = [];
   for (let i = 0; i < sources.length; i++) {
-    const source = sources[i];
+    const source = sources[i].toString();
     const sourceInfoArray = source.split(/\s/);
     const [mode, type, object, file] = sourceInfoArray;
     let sourceName = file;
