@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { checkout, getSources } = require('../cliTools/git');
+const { getSources } = require('../cliTools/git');
 
 const router = express.Router();
 
