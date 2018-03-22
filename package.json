@@ -9,7 +9,7 @@
     "start": "export NODE_ENV=production && node start.js ",
     "lint": "eslint . --ext .js --ignore-pattern public --ignore-pattern node_modules/ && stylelint **/*.css",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -rf ./public && webpack --config ./webpack.config.production.js"
+    "build": "rm -rf ./public && npm run lint && webpack --config ./webpack.config.production.js"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
