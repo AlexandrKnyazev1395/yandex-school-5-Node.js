@@ -3,13 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev-server": "nodemon start.js --ignore client/",
+    "dev-server": "export NODE_ENV=production && nodemon start.js --ignore client/",
     "dev-client": "node start.js",
-    "dev": "nodemon --ignore client/ start.js",
+    "dev-fullstack": "nodemon start.js --ignore client/",
     "start": "export NODE_ENV=production && node start.js ",
     "lint": "eslint . --ext .js --ignore-pattern public --ignore-pattern node_modules/ && stylelint **/*.css",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -rf ./public && npm run lint && webpack --config ./webpack.config.production.js"
+    "build": "webpack --config ./webpack.config.production.js"
   },
   "dependencies": {
     "body-parser": "~1.18.2",

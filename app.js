@@ -11,6 +11,8 @@ const app = express();
 // webpack-dev-server
 if (isDeveloping) {
   // eslint-disable-next-line
+  console.log('server with webpack-dev-server');
+  // eslint-disable-next-line
   const webpack = require('webpack');
   // eslint-disable-next-line
   const webpackDevMiddleware = require('webpack-dev-middleware');
@@ -47,7 +49,6 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-
 
 app.use('/', index);
 app.use('/sources', sources);

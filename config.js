@@ -1,5 +1,5 @@
 module.exports = {
-  host: 'localhost',
-  port: 3003,
-  repo: '/home/alex/repo/my_test_git',
+  host: '0.0.0.0',
+  port: 3000,
+  repo: 'repos/my_test_git',
 };
