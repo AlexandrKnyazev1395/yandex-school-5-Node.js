@@ -1,6 +1,5 @@
-const fs = require('fs');
+
 const { spawn } = require('child_process');
-const path = require('path');
 
 const config = require('../../config');
 
@@ -28,7 +27,7 @@ function executeCliCommand(bashText, executeCliOptions = defaultExecuteCliOption
     spawnOptions.cwd += `/${pathModificator}`;
   }
   const executing = spawn(command, keys, spawnOptions);
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     const result = {
       errors: [],
       body: [],
@@ -41,10 +40,9 @@ function executeCliCommand(bashText, executeCliOptions = defaultExecuteCliOption
         result.errors.push(data);
       }
     });
-    executing.on('close', (code) => {
+    executing.on('close', () => {
       if (result.body) {
         if (isSplitByEnter) {
-          console.log(result.body.toString());
           // конвертируем unit8Array в stringArray
           result.body = result.body.toString().split('\n');
           result.body = result.body.filter(s => s !== '');

@@ -4,7 +4,7 @@ const router = express.Router();
 
 const { getBranches } = require('../cliTools/git');
 
-router.get('/', async (req, res, next) => {
+router.get('/', async (req, res) => {
   const branches = await getBranches();
   if (!branches.errors.length) {
     res.render('index', {

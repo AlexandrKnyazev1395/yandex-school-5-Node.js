@@ -4,7 +4,7 @@ const { getSources } = require('../cliTools/git');
 
 const router = express.Router();
 
-router.get('/:branch', async (req, res, next) => {
+router.get('/:branch', async (req, res) => {
   const { branch } = req.params;
   const { commit, path } = req.query;
   let destination;

@@ -1,5 +1,4 @@
 const executeCliCommand = require('./executeCliCommand');
-const trim = require('lodash.trim');
 
 async function getFileContent(destination, path) {
   const bashText = `git show ${destination}:${path}`;

@@ -3,9 +3,11 @@ module.exports = {
     "rules": {
         "no-use-before-define": "off",
         "no-plusplus": "off",
+        "no-trailing-spaces": "off",
+        /* uncommit it on developing
         "no-console": "off",
         "no-debugger": "off",
         "no-unused-vars": "off",
-        "no-trailing-spaces": "off" /*[error, "ignore-jsdoc", "ignore-jsdoc", "ignore-blank-lines"],*/
+        */ 
     }
 };

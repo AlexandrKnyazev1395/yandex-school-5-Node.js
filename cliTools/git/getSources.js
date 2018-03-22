@@ -32,7 +32,8 @@ function separateFoldersAndFiles(sources, pathModificator) {
   for (let i = 0; i < sources.length; i++) {
     const source = sources[i].toString();
     const sourceInfoArray = source.split(/\s/);
-    const [mode, type, object, file] = sourceInfoArray;
+    const type = sourceInfoArray[1];
+    const file = sourceInfoArray[3];
     let sourceName = file;
     let sourcePath = pathModificator ? pathModificator + sourceName : sourceName;
     if (type === 'tree') {

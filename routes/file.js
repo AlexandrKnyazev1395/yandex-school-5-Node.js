@@ -5,7 +5,7 @@ const { getFileContent } = require('../cliTools/git');
 const router = express.Router();
 
 /* GET users listing. */
-router.get('/:branch/:path', async (req, res, next) => {
+router.get('/:branch/:path', async (req, res) => {
   const { branch, path } = req.params;
   if (!path || !branch) {
     res.send('you didn\'t provide the path to file or branch in request');

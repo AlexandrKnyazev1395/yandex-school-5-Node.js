@@ -1,7 +1,6 @@
 const trim = require('lodash.trim');
 
 const executeCliCommand = require('./executeCliCommand');
-const config = require('../../config');
 
 async function getCommits(destination) {
   const dateFormat = '%Y-%m-%d(%H:%M)';
@@ -16,8 +15,8 @@ async function getCommits(destination) {
 function parseCommits(commits) {
   return commits.map((commit) => {
     const commitInfoArray = trim(commit, ',').split('_');
-    let [hash, ...extraCommitInfo] = commitInfoArray;
-    extraCommitInfo = extraCommitInfo.join(', ');
+    const [hash, ...extraCommitInfoArray] = commitInfoArray;
+    const extraCommitInfo = extraCommitInfoArray.join(', ');
     return {
       hash,
       extraCommitInfo,
