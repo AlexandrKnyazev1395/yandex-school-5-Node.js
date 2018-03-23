@@ -9,11 +9,12 @@
     <h1> <a href='/'><%= title %></a></h1>
     <h2><%= section %> </h2>
     <h3 class="breadcump">
-      <% pathBreadCump.forEach(function(path){ %>
-        <a href="/sources/<%= branch %>?path=<%= path.link %>">
-          <%= path.linkText %>
-        </a> 
-      <% }); %>
+      <% for(var i=0; i < pathBreadCump.length-1; i++) {%>
+          <a href="/sources/<%= branch %>?path=<%= pathBreadCump[i].link %>">
+          <%= pathBreadCump[i].linkText %>
+          </a> 
+      <% } %>
+      <span><%= pathBreadCump[pathBreadCump.length-1].linkText %></span>
     </h3>
     <ul class="sources-list">
       <% folders.forEach(function(folder){ %>

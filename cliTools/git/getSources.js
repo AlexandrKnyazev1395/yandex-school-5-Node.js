@@ -7,10 +7,9 @@ const executeCliCommand = require('./executeCliCommand');
  
  */
 async function getSources(destination, pathModificator) {
-  let pathModificatorToSlash;
   let bashText;
   if (pathModificator) {
-    bashText = `git ls-tree ${destination} ${pathModificatorToSlash}`;
+    bashText = `git ls-tree ${destination} ${pathModificator}`;
   } else {
     bashText = `git ls-tree ${destination}`;
   }

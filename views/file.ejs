@@ -8,11 +8,14 @@
   <body>
     <h1> <a href='/'><%= title %></a></h1>
     <h2><%= section %> </h2>
-    <h3 class="breadcump"> 
-      <% for(key in pathBreadCump) { %>
-        <a href="/sources/<%= branch %>?path=<%= pathBreadCump[key] %>" ><%= key %> </a>
-      <%} %>
+    <h3 class="breadcump">
+      <% for(var i=0; i < pathBreadCump.length-1; i++) {%>
+          <a href="/sources/<%= branch %>?path=<%= pathBreadCump[i].link %>">
+          <%= pathBreadCump[i].linkText %>
+          </a> 
+      <% } %>
+      <span><%= pathBreadCump[pathBreadCump.length-1].linkText %></span>
     </h3>
-      <p class="file-content"><%= fileContent %></p>
+    <p class="file-content"><%= fileContent %></p>
   </body>
 </html>

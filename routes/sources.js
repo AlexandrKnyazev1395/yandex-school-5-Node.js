@@ -22,7 +22,7 @@ router.get('/:branch', async (req, res) => {
       section: 'Исходники',
       folders: sources.body.folders,
       files: sources.body.files,
-      destination,
+      branch,
       commit,
       pathBreadCump,
     });
