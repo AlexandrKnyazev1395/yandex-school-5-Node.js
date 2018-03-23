@@ -15,7 +15,7 @@ cache:
 
 before_script:
   - npm run build 
-
+  - cd repos && git clone https://github.com/alex-knyazev/my-git-test-repo
 
 deploy:
   provider: heroku
@@ -24,6 +24,6 @@ deploy:
   app: my-git-demo
   on:
     repo: alex-knyazev/yandex-school-5-Node.js
-  after_deploy: "cd repos && git clone https://github.com/alex-knyazev/my-git-test-repo"
+  
 
 
