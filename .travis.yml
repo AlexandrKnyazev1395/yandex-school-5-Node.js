@@ -5,6 +5,8 @@ sudo: false
 node_js:
   - "9"
 
+notifications: 
+  email: false
 
 cache:
   directories:
