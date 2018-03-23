@@ -20,7 +20,7 @@ before_script:
   - cd my-git-test-repo/ 
   - git init 
   - git remote add origin https://github.com/alex-knyazev/my-git-test-repo  
-  - git pull --all 
+  - git pull origin master
   - cd ../../
 
 deploy:
