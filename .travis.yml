@@ -15,13 +15,6 @@ cache:
 
 before_script:
   - npm run build 
-  - cd repos 
-  - mkdir my-git-test-repo/ 
-  - cd my-git-test-repo/ 
-  - git init 
-  - git remote add origin https://github.com/alex-knyazev/my-git-test-repo  
-  - git pull origin master
-  - cd ../../
 
 deploy:
   provider: heroku
