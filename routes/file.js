@@ -7,7 +7,7 @@ const router = express.Router();
 /* GET users listing. */
 router.get('/:branch/:path', async (req, res) => {
   const { branch, path } = req.params;
-  const normalizePath =  path.replace(/-/g, '/');
+  const normalizePath = path.replace(/-/g, '/');
   if (!path || !branch) {
     res.send('you didn\'t provide the path to file or branch in request');
   }
