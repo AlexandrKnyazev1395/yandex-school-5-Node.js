@@ -24,7 +24,5 @@ deploy:
   app: my-git-demo
   on:
     repo: alex-knyazev/yandex-school-5-Node.js
-  run:
-    "export GIT_DISCOVERY_ACROSS_FILESYSTEM=1"
 
 
