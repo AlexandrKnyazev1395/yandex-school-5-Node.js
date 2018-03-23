@@ -6,7 +6,7 @@
     "dev-server": "export NODE_ENV=production && nodemon start.js --ignore client/",
     "dev-client": "node start.js",
     "dev-fullstack": "nodemon start.js --ignore client/",
-    "start": "export NODE_ENV=production && node start.js ",
+    "start": "npm run build && export NODE_ENV=production && node start.js ",
     "lint": "eslint . --ext .js --ignore-pattern public --ignore-pattern node_modules/ && stylelint **/*.css",
     "test": "echo \"no test specified\"",
     "build": "webpack --config ./webpack.config.production.js"
