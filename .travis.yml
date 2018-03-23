@@ -15,6 +15,15 @@ cache:
 
 before_script:
   - npm run build 
+
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: "jHKDFjUA5XPSO0Rre6LO11+PBobONJWZ0y5ex7OUJZbxWWq1EwBM21epdXbSi+ctvXsYS0tF/lribjTzRzEwLyxu2IN7ybu/yxOejjN0CL72RWGNQykXYuAfy+qQ0ts58VhmN09d/VrecQ+KUMb8+9BCs14Zwu4ddi3XpgdyXxceJ8+KaQE90a1VT0XF6kpv5kKIO/J+y6+OeaiSHBKxATzuAbJwuB1329StkGw/pH0E+rTau7Mf1Dtdi7M+ASI2uIJVYvNUs8FpLxh6HunyUCiHF4pIcL+JXtPikEGJbTqgG02nhdnA9Mr/jSoe8tdQlWnDIqWrj7CgUjON2hxHwyck0vSu3GdeXVypEijZQkbyu/Xwn6/tQBiS7W6YBy4uP9I9RxFKiJyN6e6wKwQ0FMJ3qYh9JJjkKtzBViC9O/iy/bXcxjzkuAaxet2x18wm/RTNbYLndnogvJGKSDkrzjNdRsjb+DvPK62+mqWBraqkMPeEV9UHYUaw5f2JWwk6+qQ6GY9WNwJisz2oFvsuTT+pRf9Fplj2GHAS1F1jeH32YZcbnvZ8TA35NCXcBe9Pho9m2UmBCC1UTXZ+oOJiIsEhtJKkEZ01y/X1v355dT7qSwTCVXhm6rzdin4L9snMlJPShg21kS3J7XW2q/M/km6B7+8Ikl8rF1QJ083tUTo="
+  app: my-git-demo
+  on:
+    repo: alex-knyazev/yandex-school-5-Node.js
  
 
 
