@@ -1,15 +1,15 @@
 body {
-  padding: 50px;
+  padding: 30px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-.git-logo {
-  width: 20px;
-  height: 20px;
 }
 
 a {
   color: #00B7FF;
+}
+
+
+.breadcump a:hover {
+  color: rgb(224, 24, 57);
 }
 
 .sources-list {

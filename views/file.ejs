@@ -6,9 +6,13 @@
     <script src='/scripts/bundle.js'> </script>
   </head>
   <body>
-    <img class="git-logo" src="/assets/git-logo.png"/>
-    <h1><%= title %></h1>
+    <h1> <a href='/'><%= title %></a></h1>
     <h2><%= section %> </h2>
+    <h3 class="breadcump"> 
+      <% for(key in pathBreadCump) { %>
+        <a href="/sources/<%= branch %>?path=<%= pathBreadCump[key] %>" ><%= key %> </a>
+      <%} %>
+    </h3>
       <p class="file-content"><%= fileContent %></p>
   </body>
 </html>

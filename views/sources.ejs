@@ -6,9 +6,15 @@
     <script src='/scripts/bundle.js'> </script>
   </head>
   <body>
-    <img class="git-logo" src="/assets/git-logo.png"/>
-    <h1><%= title %></h1>
+    <h1> <a href='/'><%= title %></a></h1>
     <h2><%= section %> </h2>
+    <h3 class="breadcump"> 
+      <% pathBreadCump.forEach(function(path){ %>
+        <a href="/sources/<%= branch %>?path=<%= path.link %>">
+          <%= path.linkText %>
+        </a> 
+      <% }); %>
+    </h3>
     <ul class="sources-list">
       <% folders.forEach(function(folder){ %>
         <li>

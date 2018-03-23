@@ -1,6 +1,7 @@
 const express = require('express');
 
 const { getSources } = require('../cliTools/git');
+const { createBreadCumpByPath } = require('../utils');
 
 const router = express.Router();
 
@@ -8,13 +9,15 @@ router.get('/:branch', async (req, res) => {
   const { branch } = req.params;
   const { commit, path } = req.query;
   let destination;
+  const normalizePath = path ? path.replace(/-/g, '/') : '/';
+  const pathBreadCump = createBreadCumpByPath(normalizePath);
   if (commit) {
     destination = commit;
   } else {
     destination = branch;
   }
   const sources = await getSources(destination, path);
-  if (!sources.errors.length) { 
+  if (!sources.errors.length) {
     res.render('sources', {
       title: 'Мой гит',
       section: 'Исходники',
@@ -22,6 +25,7 @@ router.get('/:branch', async (req, res) => {
       files: sources.body.files,
       branch,
       commit,
+      pathBreadCump,
     });
   } else {
     res.render('error', {
