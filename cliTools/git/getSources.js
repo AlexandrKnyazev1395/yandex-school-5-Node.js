@@ -10,7 +10,6 @@ async function getSources(destination, pathModificator) {
   let pathModificatorToSlash;
   let bashText;
   if (pathModificator) {
-    pathModificatorToSlash = pathModificator.replace(/-/g, '/');
     bashText = `git ls-tree ${destination} ${pathModificatorToSlash}`;
   } else {
     bashText = `git ls-tree ${destination}`;
@@ -45,7 +44,7 @@ function separateFoldersAndFiles(sources, pathModificator) {
     let sourcePath = pathModificator ? pathModificator + sourceName : sourceName;
     if (type === 'tree') {
       sourceName += '/';
-      sourcePath += '-';
+      sourcePath += '/';
       folders.push({ sourceName, sourcePath });
     } else {
       files.push({ sourceName, sourcePath });

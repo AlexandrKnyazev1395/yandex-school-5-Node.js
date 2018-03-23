@@ -26,11 +26,11 @@
       <% files.forEach(function(file){ %>
         <li>
         <% if(commit){ %>
-          <a href="/file/<%= commit %>/<%= file.sourcePath %>">
+          <a href="/file/<%= commit %>?path=<%= file.sourcePath %>">
             <%= file.sourceName %>
           </a> 
         <% } else{ %>  
-          <a href="/file/<%= branch %>/<%= file.sourcePath %>">
+          <a href="/file/<%= branch %>?path=<%= file.sourcePath %>">
             <%= file.sourceName %>
           </a>  
         <% } %>

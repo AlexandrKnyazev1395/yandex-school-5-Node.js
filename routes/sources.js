@@ -9,8 +9,7 @@ router.get('/:branch', async (req, res) => {
   const { branch } = req.params;
   const { commit, path } = req.query;
   let destination;
-  const normalizePath = path ? path.replace(/-/g, '/') : '/';
-  const pathBreadCump = createBreadCumpByPath(normalizePath);
+  const pathBreadCump = createBreadCumpByPath(path || '/');
   if (commit) {
     destination = commit;
   } else {
@@ -23,7 +22,7 @@ router.get('/:branch', async (req, res) => {
       section: 'Исходники',
       folders: sources.body.folders,
       files: sources.body.files,
-      branch,
+      destination,
       commit,
       pathBreadCump,
     });

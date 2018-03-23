@@ -1,5 +1,5 @@
 function createBreadCumpByPath(path) {
-  const pathArray = path.split('/');
+  const pathArray = path.split('/').filter(s => s !== '');
   const breadCumpArray = [
     {
       linkText: '__/',
