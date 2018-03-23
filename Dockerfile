@@ -8,7 +8,9 @@ FROM node:carbon
   COPY . .
 # build public folder
   RUN npm run build
-
+  
+  RUN mkdir repo
+  
   RUN git clone --mirror https://github.com/alex-knyazev/my-git-test-repo repo/.git
 #system will provide this port to our docker-container
   EXPOSE 3000

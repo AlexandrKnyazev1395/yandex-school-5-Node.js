@@ -10,22 +10,17 @@ const defaultSpawnOptions = {
 
 const defaultExecuteCliOptions = {
   isLookForErrors: true,
-  pathModificator: '',
   isSplitByEnter: true,
 };
 
 function executeCliCommand(bashText, executeCliOptions = defaultExecuteCliOptions) {
   const {
     isLookForErrors,
-    pathModificator,
     isSplitByEnter,
   } = executeCliOptions;
   const commandWords = bashText.split(' ');
   const [command, ...keys] = commandWords;
   const spawnOptions = { ...defaultSpawnOptions };
-  if (pathModificator) {
-    spawnOptions.cwd += `/${pathModificator}`;
-  }
   const executing = spawn(command, keys, spawnOptions);
   return new Promise((resolve) => {
     const result = {

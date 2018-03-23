@@ -1,3 +1,5 @@
+const path = require('path');
+
 const executeCliCommand = require('./executeCliCommand');
 
 /**
@@ -6,14 +8,15 @@ const executeCliCommand = require('./executeCliCommand');
  */
 async function getSources(destination, pathModificator) {
   let pathModificatorToSlash;
+  let bashText;
   if (pathModificator) {
     pathModificatorToSlash = pathModificator.replace(/-/g, '/');
+    bashText = `git ls-tree ${destination} ${pathModificatorToSlash}`;
+  } else {
+    bashText = `git ls-tree ${destination}`;
   }
-  const bashText = `git ls-tree ${destination}`;
+  
   const executeCliOptions = { isSplitByEnter: true };
-  if (pathModificatorToSlash) {
-    executeCliOptions.pathModificator = pathModificatorToSlash;
-  }
   const sourcesData = await executeCliCommand(bashText, executeCliOptions);
   if (!sourcesData.errors.length) {
     sourcesData.body = separateFoldersAndFiles(sourcesData.body, pathModificator); 
@@ -37,7 +40,7 @@ function separateFoldersAndFiles(sources, pathModificator) {
     const source = sources[i].toString();
     const sourceInfoArray = source.split(/\s/);
     const type = sourceInfoArray[1];
-    const file = sourceInfoArray[3];
+    const file = path.basename(sourceInfoArray[3]);
     let sourceName = file;
     let sourcePath = pathModificator ? pathModificator + sourceName : sourceName;
     if (type === 'tree') {
