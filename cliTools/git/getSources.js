@@ -3,8 +3,11 @@ const path = require('path');
 const executeCliCommand = require('./executeCliCommand');
 
 /**
- * 
- 
+ * Поиск файлов и папок в гит-репозитории
+ * @description выполняется git-ls-tree, результат парсится и разделяется на папки и файлы
+ * @param {string} destination название ветки или хэш комита в котором происходит поиск
+ * @param {string} pathModificator путь, по которому следует производить поиск
+ * @returns {Object} объект содержащий body и errors
  */
 async function getSources(destination, pathModificator) {
   let bashText;
@@ -13,7 +16,6 @@ async function getSources(destination, pathModificator) {
   } else {
     bashText = `git ls-tree ${destination}`;
   }
-  
   const executeCliOptions = { isSplitByEnter: true };
   const sourcesData = await executeCliCommand(bashText, executeCliOptions);
   if (!sourcesData.errors.length) {
@@ -23,13 +25,11 @@ async function getSources(destination, pathModificator) {
 }
 
 /**
- * Парсинг результата функции git ls-tree https://git-scm.com/docs/git-ls-tree
- * @description Парсит из каждой строки тип (файл/папка), 
- *    добавляет к названиям папок знак '/', возвращает объект из двух массивов - файлов и папок
- * @param {String} sources - строка, полученная на выходе из функции git ls-tree
- * @param {String} pathModificator - строка, являющаяся путем к директории папки/файла
- * @returns {object} - объект с двумя ключами: files и folders. 
- *    files и folders содержат массивы объектов с именами файлов/папок и путей к ним
+ * Парсинг результата функции git ls-tree 
+ * @description разделяются файлы и папки, к названиям папок добавляется знак '/'
+ * @param {array} sources - строки, полученные в результате выполнения git ls-tree
+ * @param {string} pathModificator - путь к директории
+ * @returns {Object} - объект, содержащий массивы files и folders
  */
 function separateFoldersAndFiles(sources, pathModificator) {
   const files = [];

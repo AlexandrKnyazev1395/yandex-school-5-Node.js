@@ -43,6 +43,9 @@ function normalizePort(val) {
   return false;
 }
 
+/**
+ * Event listener for HTTP server "listen" (when start) event.
+ */
 function onListen() {
   console.log(`Your server available at http://${host}:${port}`);
 }

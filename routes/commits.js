@@ -4,7 +4,6 @@ const { getCommits } = require('../cliTools/git');
 
 const router = express.Router();
 
-/* GET users listing. */
 router.get('/:branch', async (req, res) => {
   let { branch } = req.params;
   if (!branch) {

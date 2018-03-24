@@ -13,6 +13,14 @@ const defaultExecuteCliOptions = {
   isSplitByEnter: true,
 };
 
+/**
+ * Выполнение команды в cli с помощью модуля child_process
+ * @description выполняется команда spawn модуля child_process, считывается поток данных,
+ *  заполняются массивы с результатами и ошибками 
+ * @param {string} bashText bash-команда для выполнения
+ * @param {object} executeCliOptions кастомные опции для обработки результатов команды
+ * @returns {Promise} промис завершается когда завершен поток вывода результатов выполнения команды
+ */
 function executeCliCommand(bashText, executeCliOptions = defaultExecuteCliOptions) {
   const {
     isLookForErrors,
