@@ -6,16 +6,8 @@
     <script src='/scripts/bundle.js'> </script>
   </head>
   <body>
-    <h1> <a href='/'><%= title %></a></h1>
-    <h2><%= section %> </h2>
-    <h3 class="breadcump">
-      <% for(var i=0; i < pathBreadCump.length-1; i++) {%>
-          <a href="/sources/<%= branch %>?path=<%= pathBreadCump[i].link %>">
-          <%= pathBreadCump[i].linkText %>
-          </a> 
-      <% } %>
-      <span><%= pathBreadCump[pathBreadCump.length-1].linkText %></span>
-    </h3>
+    <% include ./app-bar.ejs %>
+    <% include ./breadcump.ejs %>
     <ul class="sources-list">
       <% folders.forEach(function(folder){ %>
         <li>

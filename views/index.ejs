@@ -6,8 +6,7 @@
     <script src='/scripts/bundle.js'> </script>
   </head>
   <body>
-    <h1> <a href='/'><%= title %></a></h1>
-    <h2><%= section %> </h2>
+    <% include ./app-bar.ejs %>
     <ul class="sources-list">
       <% branches.forEach(function(branch){ %>
         <li>
