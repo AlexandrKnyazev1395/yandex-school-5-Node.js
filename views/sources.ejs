@@ -10,22 +10,31 @@
     <% include ./breadcump.ejs %>
     <ul class="sources-list">
       <% folders.forEach(function(folder){ %>
-        <li>
-          <a href="/sources/<%= branch %>?path=<%= folder.sourcePath %>">
-            <%= folder.sourceName %>
-          </a> 
-        </li>
+        <% if(commit){ %>
+          <li>
+            <a href="/sources/<%= branch %>?commit=<%= commit %>&path=<%= folder.sourcePath %>">
+              <%= folder.sourceName %>
+            </a> 
+          </li>
+        <% } else{ %>  
+          <li>
+            <a href="/sources/<%= branch %>?path=<%= folder.sourcePath %>">
+              <%= folder.sourceName %>
+            </a> 
+          </li>
+        <% } %>
+
       <% }); %>
       <% files.forEach(function(file){ %>
         <li>
         <% if(commit){ %>
-          <a href="/file/<%= commit %>?path=<%= file.sourcePath %>">
+          <a href="/file/<%= branch %>?commit=<%= commit %>&path=<%= file.sourcePath %>">
             <%= file.sourceName %>
-          </a> 
+          </a>
         <% } else{ %>  
           <a href="/file/<%= branch %>?path=<%= file.sourcePath %>">
             <%= file.sourceName %>
-          </a>  
+          </a> 
         <% } %>
         </li>
       <% }); %>

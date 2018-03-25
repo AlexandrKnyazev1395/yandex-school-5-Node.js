@@ -7,11 +7,6 @@ a {
   color: #00B7FF;
 }
 
-
-.breadcump a:hover {
-  color: rgb(224, 24, 57);
-}
-
 .sources-list {
   width: 80%;
   padding: 0;
@@ -34,12 +29,17 @@ a {
   padding: 9px 5px;
   border-radius: 10px;
 }
-.sources-list li a:hover {
-  background-color: rgba(0, 0, 0, 0.1)
-}
 
 .file-content {
   padding: 20px;
   border: 1px solid black;
   white-space: pre;
+}
+
+.breadcump a:hover {
+  color: rgb(224, 24, 57);
+}
+
+.sources-list li a:hover {
+  background-color: rgba(0, 0, 0, 0.1)
 }
