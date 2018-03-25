@@ -9,5 +9,8 @@ module.exports = {
         "no-debugger": "off",
         "no-unused-vars": "off",
         */ 
-    }
+    },
+    env: {
+        "mocha": true
+    }    
 };

@@ -2,15 +2,15 @@ const executeCliCommand = require('./executeCliCommand');
 const trim = require('lodash.trim');
 /**
  * Получение списка веток репозитория
- * @returns {Object} объект содержащий body и errors
+ * @returns {Promise} ресолвит объект содержащий body и errors
  */
-async function getBranches() {
+async function getBranches(execute = executeCliCommand) {
   const bashText = 'git branch';
-  const branchesData = await executeCliCommand(bashText);
+  const branchesData = await execute(bashText);
   if (!branchesData.errors.length) {
     branchesData.body = parseBranches(branchesData.body); 
   }
-  return branchesData;
+  return Promise.resolve(branchesData);
 }
 
 /**
@@ -23,4 +23,7 @@ function parseBranches(branches) {
   return branches.map(branch => trim(trim(branch, '*'), ' ')); 
 }
 
-module.exports = getBranches;
+module.exports = {
+  getBranches,
+  parseBranches,
+};

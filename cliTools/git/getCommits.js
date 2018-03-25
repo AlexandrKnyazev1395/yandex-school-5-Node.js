@@ -7,9 +7,9 @@ const executeCliCommand = require('./executeCliCommand');
  * @param {string} destination название ветки или хэш комита в котором происходит поиск
  * @returns {Object} объект содержащий body и errors
  */
-async function getCommits(destination) {
+async function getCommits(destination, execute = executeCliCommand) {
   const bashText = `git log ${destination} --date=iso --pretty=format:%h_%cd_%s_%ae --`;
-  const sourcesData = await executeCliCommand(bashText);
+  const sourcesData = await execute(bashText);
   if (!sourcesData.errors.length) {
     sourcesData.body = parseCommits(sourcesData.body); 
   }
@@ -28,4 +28,7 @@ function parseCommits(commits) {
   });
 }
 
-module.exports = getCommits;
+module.exports = {
+  getCommits,
+  parseCommits,
+};

@@ -9,15 +9,16 @@ const executeCliCommand = require('./executeCliCommand');
  * @param {string} pathModificator путь, по которому следует производить поиск
  * @returns {Object} объект содержащий body и errors
  */
-async function getSources(destination, pathModificator) {
+async function getSources(destination, pathModificator, execute = executeCliCommand) {
   let bashText;
   if (pathModificator) {
     bashText = `git ls-tree ${destination} ${pathModificator}`;
   } else {
     bashText = `git ls-tree ${destination}`;
   }
+  
   const executeCliOptions = { isSplitByEnter: true };
-  const sourcesData = await executeCliCommand(bashText, executeCliOptions);
+  const sourcesData = await execute(bashText, executeCliOptions);
   if (!sourcesData.errors.length) {
     sourcesData.body = separateFoldersAndFiles(sourcesData.body, pathModificator); 
   }
@@ -55,4 +56,7 @@ function separateFoldersAndFiles(sources, pathModificator) {
   };
 }
 
-module.exports = getSources;
+module.exports = {
+  getSources,
+  separateFoldersAndFiles,
+};

@@ -6,11 +6,14 @@ const executeCliCommand = require('./executeCliCommand');
  * @param {string} path путь к файлу
  * @returns {Object} объект содержащий body и errors
  */
-async function getFileContent(destination, path) {
+async function getFileContent(destination, path, execute = executeCliCommand) {
   const bashText = `git show ${destination}:${path}`;
   const executeCliOptions = { isSplitByEnter: false };
-  const fileContent = await executeCliCommand(bashText, executeCliOptions);
+  const fileContent = await execute(bashText, executeCliOptions);
   return fileContent;
 }
 
-module.exports = getFileContent;
+module.exports = {
+  getFileContent,
+};
+
