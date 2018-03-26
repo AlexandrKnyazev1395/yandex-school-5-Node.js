@@ -7,11 +7,11 @@
   </head>
   <body>
     <% include ./app-bar.ejs %>
-    <ul class="sources-list">
+    <ul class="commits-list">
       <% commits.forEach(function(commit){ %>
-        <li>
-          <a href="/sources/<%= branch %>?commit=<%= commit.hash %>"><%= commit.hash %></a>
-          <span><%= commit.extraCommitInfo %></span> 
+        <li class="commits-list__element">
+          <a class="commits-list__commit-hash" href="/sources/<%= branch %>?commit=<%= commit.hash %>"><%= commit.hash %></a>
+          <span class="commits-list__commit-rest" ><%= commit.extraCommitInfo %></span> 
         </li>
       <% }); %>
     </ul>
