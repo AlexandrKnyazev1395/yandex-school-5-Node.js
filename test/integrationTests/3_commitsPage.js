@@ -6,7 +6,7 @@ const cheerio = require('cheerio');
 // указанная здесь ветка обязательно должна существовать в тестовом репозитории
 const testBranch = 'master'; 
 
-describe('2. Работа страницы с комитами', () => {
+describe('3. Работа страницы с комитами', () => {
   it('Отображается непустой список комитов', async function() {
     await this.browser.url(`/commits/${testBranch}`);
     const commits = await this.browser.isExisting('.commits-list');

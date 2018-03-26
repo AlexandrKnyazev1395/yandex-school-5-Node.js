@@ -7,7 +7,7 @@ const { URL }  = require('url');
 // указанная здесь ветка обязательно должна существовать в тестовом репозитории
 const testBranch = 'master'; 
 
-describe('2. Работа страницы с исходниками', () => {
+describe('4. Работа страницы с исходниками', () => {
   it('Отображается непустой список исходников', async function() {
     await this.browser.url(`/sources/${testBranch}`);
     const commits = await this.browser.isExisting('.sources-list');
