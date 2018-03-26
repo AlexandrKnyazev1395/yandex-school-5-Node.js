@@ -7,39 +7,39 @@ a {
   color: #00B7FF;
 }
 
-
-.breadcump a:hover {
-  color: rgb(224, 24, 57);
-}
-
-.sources-list {
+.sources-list, .branches-list, .commits-list {
   width: 80%;
   padding: 0;
 }
 
-.sources-list li {
+.sources-list li, .branches-list li, .commits-list li {
   padding: 10px;
   list-style-type: none;
   border-bottom: 1px solid #00B7FF;
 }
 
-.sources-list li span {
+.sources-list li span, .branches-list li span, .commits-list li span {
   padding: 10px;
   font-size: 16px;
   list-style-type: none;
 }
 
-.sources-list li a {
+.sources-list li a, .branches-list li a, .commits-list li a {
   margin: 0px 5px;
   padding: 9px 5px;
   border-radius: 10px;
-}
-.sources-list li a:hover {
-  background-color: rgba(0, 0, 0, 0.1)
 }
 
 .file-content {
   padding: 20px;
   border: 1px solid black;
   white-space: pre;
+}
+
+.breadcump a:hover {
+  color: rgb(224, 24, 57);
+}
+
+.sources-list li a:hover, .commits-list li a:hover, .sources-list li a:hover {
+  background-color: rgba(0, 0, 0, 0.1)
 }

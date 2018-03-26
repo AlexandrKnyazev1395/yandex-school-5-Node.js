@@ -16,9 +16,9 @@ async function getSources(destination, pathModificator, execute = executeCliComm
   } else {
     bashText = `git ls-tree ${destination}`;
   }
-  
   const executeCliOptions = { isSplitByEnter: true };
   const sourcesData = await execute(bashText, executeCliOptions);
+
   if (!sourcesData.errors.length) {
     sourcesData.body = separateFoldersAndFiles(sourcesData.body, pathModificator); 
   }

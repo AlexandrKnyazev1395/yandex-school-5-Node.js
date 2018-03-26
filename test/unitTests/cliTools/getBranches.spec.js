@@ -32,10 +32,9 @@ describe('Получение веток', () => {
   });
 
   describe('Парсер работает правильно', () => {
-    it('При передаче массива, где ветки имеют лишние символы, парсер их обрезает', (done) => {
+    it('При передаче вывода функции executeCliCommand возвращает названия веток без лишних символов', () => {
       const parsedBranches = parseBranches(branchesStub);
       expect(parsedBranches).to.deep.equal(['master', 'branchName1', 'branchName2']);
-      done();
     });
   });
 });
