@@ -7,12 +7,12 @@
   </head>
   <body>
     <% include ./app-bar.ejs %>
-    <ul class="sources-list">
+    <ul class="branches-list">
       <% branches.forEach(function(branch){ %>
-        <li>
-          <span><%= branch %></span> 
-          <a href="commits/<%= branch %>">commits</a> 
-          <a href="sources/<%= branch %>">sources</a> 
+        <li class="branches-list__element">
+          <span class="branches-list__branch-name"><%= branch %></span> 
+          <a class="branches-list__commits-link" href="commits/<%= branch %>">commits</a> 
+          <a class="branches-list__sources-link" href="sources/<%= branch %>">sources</a> 
         </li>
       <% }); %>
     </ul>

@@ -11,22 +11,22 @@
     <ul class="sources-list">
       <% folders.forEach(function(folder){ %>
         <% if(commit){ %>
-          <li>
+          <li class="sources-list__element" >
             <a href="/sources/<%= branch %>?commit=<%= commit %>&path=<%= folder.sourcePath %>">
               <%= folder.sourceName %>
             </a> 
-          </li>
+          </li class="sources-list__element" >
         <% } else{ %>  
-          <li>
+          <li class="sources-list__element" >
             <a href="/sources/<%= branch %>?path=<%= folder.sourcePath %>">
               <%= folder.sourceName %>
             </a> 
-          </li>
+          </li class="sources-list__element" >
         <% } %>
 
       <% }); %>
       <% files.forEach(function(file){ %>
-        <li>
+        <li class="sources-list__element" >
         <% if(commit){ %>
           <a href="/file/<%= branch %>?commit=<%= commit %>&path=<%= file.sourcePath %>">
             <%= file.sourceName %>
@@ -36,7 +36,7 @@
             <%= file.sourceName %>
           </a> 
         <% } %>
-        </li>
+        </li class="sources-list__element" >
       <% }); %>
     </ul>
   </body>
