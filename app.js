@@ -37,7 +37,7 @@ if (isDeveloping) {
 const index = require('./routes/index');
 const sources = require('./routes/sources');
 const commits = require('./routes/commits');
-const file = require('./routes/file');
+const file = require('./routes/file').router;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

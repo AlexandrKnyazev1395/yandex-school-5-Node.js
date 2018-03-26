@@ -7,9 +7,13 @@ const router = express.Router();
 
 /* GET users listing. */
 router.get('/:branch/', async (req, res) => {
+  getFilePage(req, res);
+});
+
+async function getFilePage(req, res) {
   const { branch } = req.params;
   const { path, commit } = req.query;
-  const pathBreadCump = createBreadCumpByPath(path || '/');
+  
   let destination;
   if (commit) {
     destination = commit;
@@ -18,7 +22,9 @@ router.get('/:branch/', async (req, res) => {
   }
   if (!path || !branch) {
     res.send('you didn\'t provide the path to file or branch in request');
+    return;
   }
+  const pathBreadCump = createBreadCumpByPath(path || '/');
   res.charset = 'utf8';
   const fileContent = await getFileContent(destination, path || '/');
   if (!fileContent.errors.length) {
@@ -35,6 +41,9 @@ router.get('/:branch/', async (req, res) => {
       errorText: fileContent.errors.join(','),
     });
   }
-});
+}
 
-module.exports = router;
+module.exports = { 
+  router,
+  getFilePage, 
+};
