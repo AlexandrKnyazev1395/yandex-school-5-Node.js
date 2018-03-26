@@ -14,7 +14,7 @@ FROM node:carbon
   RUN mkdir repo
   
 # clone test-repository from github  
-  RUN git clone --mirror https://github.com/alex-knyazev/my-git-test-repo repo/.git
+  RUN git clone --mirror https://github.com/alex-knyazev/yandex-school-5-Node.js /.git
 
 #system will provide this port to our docker-container
   EXPOSE 3000

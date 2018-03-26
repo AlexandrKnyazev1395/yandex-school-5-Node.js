@@ -8,13 +8,19 @@ const router = express.Router();
 /* GET users listing. */
 router.get('/:branch/', async (req, res) => {
   const { branch } = req.params;
-  const { path } = req.query;
+  const { path, commit } = req.query;
   const pathBreadCump = createBreadCumpByPath(path || '/');
+  let destination;
+  if (commit) {
+    destination = commit;
+  } else {
+    destination = branch;
+  }
   if (!path || !branch) {
     res.send('you didn\'t provide the path to file or branch in request');
   }
   res.charset = 'utf8';
-  const fileContent = await getFileContent(branch, path || '/');
+  const fileContent = await getFileContent(destination, path || '/');
   if (!fileContent.errors.length) {
     res.render('file', {
       title: 'Мой гит',
@@ -22,6 +28,7 @@ router.get('/:branch/', async (req, res) => {
       fileContent: fileContent.body,
       pathBreadCump,
       branch,
+      commit,
     });
   } else {
     res.render('error', {
