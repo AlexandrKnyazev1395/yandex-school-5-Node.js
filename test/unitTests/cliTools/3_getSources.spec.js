@@ -45,18 +45,18 @@ const executeCliCommandStub = () => Promise.resolve({
 describe('Получение файлов и папок', () => {
   describe('Функция возвращает верные данные', async () => {
     it('Промис возвращает объект со свойствами body и errors', async () => {
-      const sources = await getSources('master', executeCliCommandStub);
+      const sources = await getSources('master', '', executeCliCommandStub);
       expect(sources).to.be.an('object').that.has.all.keys('body', 'errors');
     });
 
     it('В свойстве errors содержится пустой массив', async () => {
-      const sources = await getSources('master', executeCliCommandStub);
+      const sources = await getSources('master', '', executeCliCommandStub);
       // eslint-disable-next-line
       expect(sources.errors).to.be.an('array').that.is.empty;
     });
 
     it('В свойстве body содержится объект с ключами files и folders, их значения - массивы', async () => {
-      const sources = await getSources('master', executeCliCommandStub);
+      const sources = await getSources('master', '', executeCliCommandStub);
       expect(sources.body).to.be.an('object');
       expect(sources.body.files).to.be.an('array');
       expect(sources.body.folders).to.be.an('array');
